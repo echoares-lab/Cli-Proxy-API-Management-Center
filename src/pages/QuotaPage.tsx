@@ -9,6 +9,7 @@ import { useAuthStore } from '@/stores';
 import { authFilesApi } from '@/services/api';
 import {
   QuotaSection,
+  QuotaFullSummarySection,
   ANTIGRAVITY_CONFIG,
   CLAUDE_CONFIG,
   CODEX_CONFIG,
@@ -56,6 +57,8 @@ export function QuotaPage() {
       </div>
 
       {error && <div className={styles.errorBox}>{error}</div>}
+
+      <QuotaFullSummarySection disabled={disableControls} />
 
       <QuotaSection
         config={CLAUDE_CONFIG}

@@ -1133,6 +1133,22 @@
       }
     }
   },
+  "quota_summary": {
+    "title": "Сводка квот в реальном времени",
+    "refresh": "Обновить",
+    "idle": "Ожидание подключения…",
+    "loading": "Загрузка квот…",
+    "error": "Не удалось загрузить квоты: {{message}}",
+    "empty": "Учётные данные не найдены.",
+    "just_now": "только что",
+    "seconds_ago": "{{count}} с назад",
+    "minutes_ago": "{{count}} мин назад",
+    "hours_ago": "{{count}} ч назад",
+    "reset_soon": "сброс скоро",
+    "resets_in_minutes": "через {{count}} мин",
+    "resets_in_hours": "через {{count}} ч",
+    "resets_in_hours_minutes": "через {{hours}} ч {{minutes}} мин"
+  },
   "quota_management": {
     "title": "Управление квотами",
     "description": "Следите за статусом квот OAuth для учётных данных Antigravity, Codex, Claude, Kimi и xAI.",

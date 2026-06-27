@@ -1145,6 +1145,22 @@
       }
     }
   },
+  "quota_summary": {
+    "title": "Live Quota Summary",
+    "refresh": "Refresh",
+    "idle": "Waiting for connection…",
+    "loading": "Fetching quota…",
+    "error": "Failed to load quota: {{message}}",
+    "empty": "No credentials found.",
+    "just_now": "just now",
+    "seconds_ago": "{{count}}s ago",
+    "minutes_ago": "{{count}}m ago",
+    "hours_ago": "{{count}}h ago",
+    "reset_soon": "resetting soon",
+    "resets_in_minutes": "in {{count}}m",
+    "resets_in_hours": "in {{count}}h",
+    "resets_in_hours_minutes": "in {{hours}}h {{minutes}}m"
+  },
   "quota_management": {
     "title": "Quota Management",
     "description": "Monitor OAuth quota status for Antigravity, Codex, Claude, Kimi, and xAI credentials.",

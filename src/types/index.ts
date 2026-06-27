@@ -11,4 +11,5 @@ export * from './authFile';
 export * from './oauth';
 export * from './log';
 export * from './quota';
+export * from './quotaStatusFull';
 export * from './plugin';

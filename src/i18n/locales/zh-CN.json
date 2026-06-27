@@ -1145,6 +1145,22 @@
       }
     }
   },
+  "quota_summary": {
+    "title": "实时配额概览",
+    "refresh": "刷新",
+    "idle": "等待连接…",
+    "loading": "获取配额中…",
+    "error": "加载配额失败：{{message}}",
+    "empty": "未找到凭证。",
+    "just_now": "刚刚",
+    "seconds_ago": "{{count}}秒前",
+    "minutes_ago": "{{count}}分钟前",
+    "hours_ago": "{{count}}小时前",
+    "reset_soon": "即将重置",
+    "resets_in_minutes": "{{count}}分钟后重置",
+    "resets_in_hours": "{{count}}小时后重置",
+    "resets_in_hours_minutes": "{{hours}}小时{{minutes}}分钟后重置"
+  },
   "quota_management": {
     "title": "配额管理",
     "description": "集中查看 OAuth 额度与剩余情况",

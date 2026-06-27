@@ -3,6 +3,7 @@
  */
 
 export { QuotaSection } from './QuotaSection';
+export { QuotaFullSummarySection } from './QuotaFullSummarySection';
 export { QuotaCard } from './QuotaCard';
 export { useQuotaLoader } from './useQuotaLoader';
 export {

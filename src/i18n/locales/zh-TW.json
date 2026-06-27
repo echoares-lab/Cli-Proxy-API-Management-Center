@@ -1171,6 +1171,22 @@
       }
     }
   },
+  "quota_summary": {
+    "title": "即時配額概覽",
+    "refresh": "重新整理",
+    "idle": "等待連線…",
+    "loading": "獲取配額中…",
+    "error": "載入配額失敗：{{message}}",
+    "empty": "未找到憑證。",
+    "just_now": "剛剛",
+    "seconds_ago": "{{count}}秒前",
+    "minutes_ago": "{{count}}分鐘前",
+    "hours_ago": "{{count}}小時前",
+    "reset_soon": "即將重置",
+    "resets_in_minutes": "{{count}}分鐘後重置",
+    "resets_in_hours": "{{count}}小時後重置",
+    "resets_in_hours_minutes": "{{hours}}小時{{minutes}}分鐘後重置"
+  },
   "quota_management": {
     "title": "配額管理",
     "description": "集中查看 OAuth 配額與剩餘情況",
