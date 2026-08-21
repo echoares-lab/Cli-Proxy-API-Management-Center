@@ -34,3 +34,6 @@ settings.local.json
 *.sln
 *.sw?
 management-center-node.cdx.json
+
+# Tool-specific agent directive pointer (Master-Policy §1.6) — untracked
+.cursorrules
