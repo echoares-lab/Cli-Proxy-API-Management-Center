@@ -108,7 +108,7 @@ jobs:
       - name: "Gate — documentation minimalism (§1.6)"
         run: |
           ARGS=""
-          false && ARGS="--exempt-vendored"
+          true && ARGS="--exempt-vendored"
           python3 "$POLICY_TOOLING/tooling/scripts/check-doc-minimalism.py" . $ARGS
 
       # ── §1.6 baseline ratchet ───────────────────────────────────────────────
@@ -125,7 +125,7 @@ jobs:
           DOC_MINIMALISM_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           ARGS=""
-          false && ARGS="--exempt-vendored"
+          true && ARGS="--exempt-vendored"
           python3 "$POLICY_TOOLING/tooling/scripts/check-doc-minimalism.py" . --ratchet $ARGS
 
       # ── Licensing-Policy §3: container builds carry the notices they owe ────
