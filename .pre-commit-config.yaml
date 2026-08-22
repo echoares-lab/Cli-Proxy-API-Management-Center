@@ -1,0 +1,66 @@
+# Local pre-commit gates (Master-Policy 1.5).
+#
+# Install once:  pre-commit install
+repos:
+  - repo: local
+    hooks:
+      # Master-Policy 1.5 (2026-08-14): MCP servers are configured once at user
+      # scope in ~/.claude.json. A repo-local .mcp.json only applies when the
+      # session happens to start in this repo, and it is how OBSIDIAN_API_KEY
+      # previously spread in plaintext across 19 checkouts.
+      #
+      # `language: fail` + `files:` rather than a `git diff --cached` walk:
+      # pre-commit already hands a hook only the files staged for this commit.
+      # Neither path is tracked anywhere in the fleet, so any match at all is a
+      # re-introduction. `pre-commit run --all-files` enumerates via `git
+      # ls-files`, so an untracked scratch .mcp.json cannot trip this spuriously.
+      - id: no-mcp-json
+        name: no repo-local .mcp.json (Master-Policy 1.5)
+        language: fail
+        entry: >-
+          .mcp.json is no longer used -- configure servers at user scope with
+          `claude mcp add -s user <name> -- <command>`. See Master-Policy 1.5.
+          Offending path:
+        files: '^\.mcp\.json(\.example)?$'
+        stages: [pre-commit]
+      - id: doc-minimalism
+        name: Master-Policy 1.6 documentation minimalism
+        entry: python3 /home/dev/repos/dev-policies/tooling/scripts/check-doc-minimalism.py
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit]
+      - id: doc-minimalism-ratchet
+        name: Master-Policy 1.6 baseline ratchet (may only shrink)
+        entry: python3 /home/dev/repos/dev-policies/tooling/scripts/check-doc-minimalism.py --ratchet
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit]
+      - id: container-notices
+        name: container builds carry the notices they owe (Licensing-Policy 3)
+        entry: python3 /home/dev/repos/dev-policies/tooling/scripts/check-container-notices.py
+        language: system
+        pass_filenames: false
+        files: '(^|/)(Dockerfile|Containerfile)(\..+)?$|(^|/).+\.Dockerfile$'
+        stages: [pre-commit]
+      - id: agents-md-drift
+        name: AGENTS.md matches the vault
+        entry: python3 /home/dev/repos/dev-policies/tooling/scripts/render-agents-md.py --repo . --check
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit]
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.28.0
+    hooks:
+      # Deliberately no `--config .gitleaks.toml`. Hooks are shared across git
+      # worktrees but .gitleaks.toml is per-branch, so an explicit --config
+      # aborts on a branch that predates the file, and the abort reads as a
+      # secret finding. The upstream entry omits --config, so gitleaks
+      # auto-discovers .gitleaks.toml when present and falls back to its
+      # built-in rules when it is not.
+      - id: gitleaks
+        args: ["--redact"]
+        stages: [pre-commit]
+
